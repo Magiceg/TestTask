@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestTask</name>
+    </assembly>
+    <members>
+        <member name="T:TestTask.Controllers.UsersController">
+            <summary>
+            Controller for user management.
+            </summary>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.#ctor(TestTask.Data.AppDbContext)">
+            <summary>
+            get the context from the database
+            </summary>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.GetUsers(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Get a list of users
+            </summary>
+            <param name="page">Page number</param>
+            <param name="pageSize">Page Size</param>
+            <param name="sortBy">Sorting field</param>
+            <param name="sortOrder">Sorting direction</param>
+            <param name="filter">Filter</param>
+            <returns>A list of users</returns>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.GetUser(System.Int32)">
+            <summary>
+            Get a user by Id
+            </summary>
+            <param name="id">User Id</param>
+            <returns>User details</returns>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.PutUser(System.Int32,TestTask.ViewModel.UserRoleViewModel)">
+            <summary>
+            Update user
+            </summary>
+            <param name="id">User Id</param>
+            <param name="vm">User model</param>
+            <returns>Updated user</returns>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.PostUser(TestTask.ViewModel.UserRoleViewModel)">
+            <summary>
+            Create User
+            </summary>
+            <param name="vm">User model</param>
+            <returns>Created User</returns>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.AddUserRole(System.Int32,System.Int32)">
+            <summary>
+            Add a user role
+            </summary>
+            <param name="userId">User Id</param>
+            <param name="roleId">Role Id</param>
+            <returns>Added a user role</returns>
+        </member>
+        <member name="M:TestTask.Controllers.UsersController.DeleteUser(System.Int32)">
+            <summary>
+            Delete user
+            </summary>
+            <param name="id">User Id</param>
+            <returns>Deleted user</returns>
+        </member>
+        <member name="T:TestTask.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:TestTask.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestTask.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestTask.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
