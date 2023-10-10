@@ -1,0 +1,91 @@
+2023-10-10 09:51:45.747 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-10 09:51:45.783 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-10 09:51:45.788 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-10 09:51:45.790 +03:00 [INF] Hosting environment: Development
+2023-10-10 09:51:45.792 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-10 09:51:46.658 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-10 09:51:46.941 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 284.0296ms
+2023-10-10 09:51:46.976 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-10 09:51:46.982 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 5.5807ms
+2023-10-10 09:51:46.987 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-10 09:51:47.006 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.2457ms
+2023-10-10 09:51:47.073 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-10 09:51:47.217 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 144.0420ms
+2023-10-10 09:52:02.379 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users?page=1&pageSize=10&sortBy=Id&sortOrder=asc&filter=Name - -
+2023-10-10 09:52:02.401 +03:00 [INF] Executing endpoint 'TestTask.Controllers.UsersController.GetUsers (TestTask)'
+2023-10-10 09:52:02.423 +03:00 [INF] Route matched with {action = "GetUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TestTask.Model.User]]] GetUsers(Int32, Int32, System.String, System.String, System.String) on controller TestTask.Controllers.UsersController (TestTask).
+2023-10-10 09:52:04.244 +03:00 [INF] Executed DbCommand (109ms) [Parameters=[@__filter_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [u].[Name]) > 0 OR (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, CONVERT(varchar(11), [u].[Age])) > 0 OR EXISTS (
+    SELECT 1
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+    WHERE [u].[Id] = [u0].[UserId] AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [r].[Name]) > 0)) OR (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [u].[Email]) > 0
+2023-10-10 09:52:04.390 +03:00 [INF] Executed DbCommand (43ms) [Parameters=[@__filter_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [t0].[UserId], [t0].[RoleId], [t0].[Id], [t0].[Id0], [t0].[Name]
+FROM (
+    SELECT [u].[Id], [u].[Age], [u].[Email], [u].[Name]
+    FROM [Users] AS [u]
+    WHERE (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [u].[Name]) > 0 OR (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, CONVERT(varchar(11), [u].[Age])) > 0 OR EXISTS (
+        SELECT 1
+        FROM [UserRoles] AS [u0]
+        INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+        WHERE [u].[Id] = [u0].[UserId] AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [r].[Name]) > 0)) OR (@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [u].[Email]) > 0
+    ORDER BY [u].[Id]
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [u1].[UserId], [u1].[RoleId], [u1].[Id], [r0].[Id] AS [Id0], [r0].[Name]
+    FROM [UserRoles] AS [u1]
+    INNER JOIN [Roles] AS [r0] ON [u1].[RoleId] = [r0].[Id]
+) AS [t0] ON [t].[Id] = [t0].[UserId]
+ORDER BY [t].[Id], [t0].[UserId], [t0].[RoleId]
+2023-10-10 09:52:04.492 +03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'TestTask.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The offset specified in a OFFSET clause may not be negative.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:bd8ca361-1147-4f25-832b-a6faa7d65cc3
+Error Number:10742,State:1,Class:15
+Microsoft.Data.SqlClient.SqlException (0x80131904): The offset specified in a OFFSET clause may not be negative.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:bd8ca361-1147-4f25-832b-a6faa7d65cc3
+Error Number:10742,State:1,Class:15
+2023-10-10 09:52:04.623 +03:00 [ERR] An error occurred while retrieving the list of users.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The offset specified in a OFFSET clause may not be negative.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at TestTask.Controllers.UsersController.GetUsers(Int32 page, Int32 pageSize, String sortBy, String sortOrder, String filter) in D:\Projects\TestTask\TestTask\Controllers\UsersController.cs:line 83
+ClientConnectionId:bd8ca361-1147-4f25-832b-a6faa7d65cc3
+Error Number:10742,State:1,Class:15
+2023-10-10 09:52:04.633 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2023-10-10 09:52:04.639 +03:00 [INF] Executed action TestTask.Controllers.UsersController.GetUsers (TestTask) in 2211.0468ms
+2023-10-10 09:52:04.641 +03:00 [INF] Executed endpoint 'TestTask.Controllers.UsersController.GetUsers (TestTask)'
+2023-10-10 09:52:04.656 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users?page=1&pageSize=10&sortBy=Id&sortOrder=asc&filter=Name - - - 500 - text/plain;+charset=utf-8 2277.0757ms

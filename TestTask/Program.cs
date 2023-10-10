@@ -4,6 +4,12 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using TestTask.Data;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Serilog.Events;
+using Serilog;
+using Microsoft.AspNetCore.Hosting;
 
 namespace TestTask
 {
@@ -18,7 +24,7 @@ namespace TestTask
                 ReferenceHandler = ReferenceHandler.Preserve
             };
 
-            // Add services to the container.
+            // Add services to the container.      
 
             builder.Services.AddControllers()
                 .AddNewtonsoftJson(options =>
@@ -42,9 +48,19 @@ namespace TestTask
                 });
             });
 
+
+
             // Dependency Injection of DbContext class 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("TestTaskConnection")));
+
+            // Configuring the Serilog logger
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console() // Log output to the console
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day) //Write logs to a file
+                .CreateLogger();
+
+            builder.Logging.AddSerilog(); 
 
             var app = builder.Build();
 

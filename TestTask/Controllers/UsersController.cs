@@ -26,14 +26,16 @@ namespace TestTask.Controllers
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly ILogger<UsersController> _logger;
 
 
         /// <summary>
         /// get the context from the database
         /// </summary>
-        public UsersController(AppDbContext context)
+        public UsersController(AppDbContext context, ILogger<UsersController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         /// <summary>
@@ -55,39 +57,51 @@ namespace TestTask.Controllers
             [FromQuery] string sortOrder = "asc",// Sorting direction
             [FromQuery] string filter = "")     // Filter
         {
-            if (_context.Users == null)
+            try
             {
-                return NotFound();
+                if (_context.Users == null)
+                {
+                    return NotFound();
+                }
+
+                // Database query for users
+                var query = _context.Users.Include(x => x.UserRoles).ThenInclude(y => y.Role).AsQueryable();
+
+                // Dynamic filtering using the method from UserFilters
+                query = UserFilters.ApplyFilters(query, filter);
+
+                // Dynamic Sorting 
+                query = UserSorting.ApplySorting(query, sortBy, sortOrder);
+
+                // Pagination
+                var totalItems = await query.CountAsync();
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+                if (page < 1) page = 1;
+                if (page > totalPages) page = totalPages;
+
+                var users = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var result = new
+                {
+                    TotalItems = totalItems,
+                    TotalPages = totalPages,
+                    Page = page,
+                    PageSize = pageSize,
+                    Users = users
+                };
+
+                // Implementation of logging
+                _logger.LogInformation("Successfully retrieved the list of users.");
+
+                return Ok(result);
             }
-
-            // Database query for users
-            var query = _context.Users.Include(x => x.UserRoles).ThenInclude(y => y.Role).AsQueryable();
-
-            // Dynamic filtering using the method from UserFilters
-            query = UserFilters.ApplyFilters(query, filter);
-
-            // Dynamic Sorting 
-            query = UserSorting.ApplySorting(query, sortBy, sortOrder);
-
-            // Pagination
-            var totalItems = await query.CountAsync();
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-
-            if (page < 1) page = 1;
-            if (page > totalPages) page = totalPages;
-
-            var users = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-
-            var result = new
+            catch(Exception ex)
             {
-                TotalItems = totalItems,
-                TotalPages = totalPages,
-                Page = page,
-                PageSize = pageSize,
-                Users = users
-            };
-
-            return Ok(result);
+                _logger.LogError(ex, "An error occurred while retrieving the list of users.");
+                return StatusCode(500, "Internal server error");
+            }
+            
         }
 
 

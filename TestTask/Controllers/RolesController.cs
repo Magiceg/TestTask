@@ -52,7 +52,6 @@ namespace TestTask.Controllers
         }
 
         // PUT: api/Roles/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRole(int id, [FromBody] Role model)
         {
@@ -84,7 +83,6 @@ namespace TestTask.Controllers
         }
 
         // POST: api/Roles
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Role>> PostRole([FromBody] Role role)
         {

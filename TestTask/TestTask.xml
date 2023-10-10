@@ -9,7 +9,7 @@
             Controller for user management.
             </summary>
         </member>
-        <member name="M:TestTask.Controllers.UsersController.#ctor(TestTask.Data.AppDbContext)">
+        <member name="M:TestTask.Controllers.UsersController.#ctor(TestTask.Data.AppDbContext,Microsoft.Extensions.Logging.ILogger{TestTask.Controllers.UsersController})">
             <summary>
             get the context from the database
             </summary>
