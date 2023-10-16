@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using TestTask.Model;
 
-namespace TestTask.Services.Sorting
+namespace TestTask.Services.UserMethod
 {
     public static class UserSorting
     {
@@ -14,7 +14,7 @@ namespace TestTask.Services.Sorting
              * of an object of type "user" with the name 
              * specified in "sortField"
              */
-            var property = Expression.Property(parameter, sortField);   
+            var property = Expression.Property(parameter, sortField);
             /* this lambda expression is passed to methods
              * "OrderBy" и "OrderByDescending" to preform
              * sorting

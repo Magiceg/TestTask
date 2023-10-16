@@ -1,0 +1,27 @@
+2023-10-13 17:54:40.713 +03:00 [INF] User profile is available. Using 'C:\Users\Пользователь\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-13 17:54:41.511 +03:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2023-10-13 17:54:41.547 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-13 17:54:41.549 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-13 17:54:41.554 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-13 17:54:41.556 +03:00 [INF] Hosting environment: Development
+2023-10-13 17:54:41.560 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-13 17:55:00.740 +03:00 [INF] User profile is available. Using 'C:\Users\Пользователь\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-13 17:55:01.026 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-13 17:55:01.028 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-13 17:55:01.033 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-13 17:55:01.036 +03:00 [INF] Hosting environment: Development
+2023-10-13 17:55:01.038 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-13 17:56:40.644 +03:00 [INF] User profile is available. Using 'C:\Users\Пользователь\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-13 17:56:40.971 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-13 17:56:40.973 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-13 17:56:40.977 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-13 17:56:40.979 +03:00 [INF] Hosting environment: Development
+2023-10-13 17:56:40.983 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-13 17:56:42.086 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-13 17:56:42.867 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 782.1911ms
+2023-10-13 17:56:42.867 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-13 17:56:42.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 12.6895ms
+2023-10-13 17:56:42.882 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-13 17:56:42.953 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.5216ms
+2023-10-13 17:56:43.004 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-13 17:56:43.235 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 231.2336ms

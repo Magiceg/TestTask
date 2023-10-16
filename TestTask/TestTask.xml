@@ -4,14 +4,49 @@
         <name>TestTask</name>
     </assembly>
     <members>
+        <member name="T:TestTask.Controllers.RolesController">
+            <summary>
+            Controller for managing roles.
+            </summary>
+        </member>
+        <member name="M:TestTask.Controllers.RolesController.GetRoles">
+            <summary>
+            Get roles
+            </summary>
+            <returns>List of roles</returns>
+        </member>
+        <member name="M:TestTask.Controllers.RolesController.GetRole(System.Int32)">
+            <summary>
+            Get a role by Id
+            </summary>
+            <param name="id">Role Id</param>
+            <returns>Role details</returns>
+        </member>
+        <member name="M:TestTask.Controllers.RolesController.PutRole(System.Int32,TestTask.Model.Role)">
+            <summary>
+            Update a role by Id
+            </summary>
+            <param name="id">Role Id</param>
+            <param name="model">Role details to update</param>
+            <returns>Result of the update operation</returns>
+        </member>
+        <member name="M:TestTask.Controllers.RolesController.PostRole(TestTask.Model.Role)">
+            <summary>
+            Create a new role
+            </summary>
+            <param name="role">Role details</param>
+            <returns>Created role</returns>
+        </member>
+        <member name="M:TestTask.Controllers.RolesController.DeleteRole(System.Int32)">
+            <summary>
+            Delete a role by Id
+            </summary>
+            <param name="id">Role Id</param>
+            <returns>Result of the delete operation</returns>
+        </member>
         <member name="T:TestTask.Controllers.UsersController">
             <summary>
             Controller for user management.
-            </summary>
-        </member>
-        <member name="M:TestTask.Controllers.UsersController.#ctor(TestTask.Data.AppDbContext,Microsoft.Extensions.Logging.ILogger{TestTask.Controllers.UsersController})">
-            <summary>
-            get the context from the database
             </summary>
         </member>
         <member name="M:TestTask.Controllers.UsersController.GetUsers(System.Int32,System.Int32,System.String,System.String,System.String)">
@@ -73,6 +108,16 @@
         </member>
         <member name="M:TestTask.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:TestTask.Services.RoleService.#ctor(TestTask.Data.AppDbContext,Microsoft.Extensions.Logging.ILogger{TestTask.Controllers.UsersController})">
+            <summary>
+            Get the context from the database
+            </summary>
+        </member>
+        <member name="M:TestTask.Services.UserService.#ctor(TestTask.Data.AppDbContext,Microsoft.Extensions.Logging.ILogger{TestTask.Controllers.UsersController})">
+            <summary>
+            Get the context from the database
+            </summary>
         </member>
     </members>
 </doc>

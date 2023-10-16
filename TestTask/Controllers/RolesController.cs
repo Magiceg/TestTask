@@ -5,121 +5,97 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using TestTask.Data;
 using TestTask.Model;
+using TestTask.Services;
+using TestTask.Services.Interfaces;
 
 namespace TestTask.Controllers
 {
-    [Route("api/[controller]")]
+	/// <summary>
+	/// Controller for managing roles.
+	/// </summary>
+	[Route("api/[controller]")]
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public RolesController(AppDbContext context)
+        private readonly IRoleService _roleService;
+        public RolesController(IRoleService roleService)
         {
-            _context = context;
+            _roleService = roleService;
         }
 
-        // GET: api/Roles
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+		/// <summary>
+		/// Get roles
+		/// </summary>
+		/// <returns>List of roles</returns>
+		[HttpGet]
+		[SwaggerOperation(Summary = "Get roles")]
+		[SwaggerResponse(StatusCodes.Status200OK, "Roles list")]
+		public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
         {
-            if (_context.Roles == null)
-            {
-                return NotFound();
-            }
-            var roles = await _context.Roles.ToListAsync();
-            return Ok(roles);
+			return await _roleService.GetRoles();
+		}
+
+		/// <summary>
+		/// Get a role by Id
+		/// </summary>
+		/// <param name="id">Role Id</param>
+		/// <returns>Role details</returns>
+		[HttpGet("{id}")]
+		[SwaggerOperation(Summary = "Get a role by Id")]
+		[SwaggerResponse(StatusCodes.Status200OK, "The role details")]
+		[SwaggerResponse(StatusCodes.Status404NotFound, "Role not found")]
+		public async Task<ActionResult<Role>> GetRole(int id)
+        {
+			return await _roleService.GetRoleById(id);
+		}
+
+		/// <summary>
+		/// Update a role by Id
+		/// </summary>
+		/// <param name="id">Role Id</param>
+		/// <param name="model">Role details to update</param>
+		/// <returns>Result of the update operation</returns>
+		[HttpPut("{id}")]
+		[SwaggerOperation(Summary = "Update a role by Id")]
+		[SwaggerResponse(StatusCodes.Status200OK, "Role updated")]
+		[SwaggerResponse(StatusCodes.Status400BadRequest, "Bad request")]
+		[SwaggerResponse(StatusCodes.Status404NotFound, "Role not found")]
+		public async Task<IActionResult> PutRole(int id, [FromBody] Role model)
+        {
+            return await _roleService.PutRole(id, model);
         }
 
-        // GET: api/Roles/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Role>> GetRole(int id)
+		/// <summary>
+		/// Create a new role
+		/// </summary>
+		/// <param name="role">Role details</param>
+		/// <returns>Created role</returns>
+		[HttpPost]
+		[SwaggerOperation(Summary = "Create a new role")]
+		[SwaggerResponse(StatusCodes.Status201Created, "Role created", typeof(Role))]
+		[SwaggerResponse(StatusCodes.Status400BadRequest, "Bad request")]
+		public async Task<ActionResult<Role>> PostRole([FromBody] Role role)
         {
-            if (_context.Roles == null)
-            {
-                return NotFound();
-            }
-            var role = await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(role);
+            return await _roleService.PostRole(role);
         }
 
-        // PUT: api/Roles/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRole(int id, [FromBody] Role model)
+		/// <summary>
+		/// Delete a role by Id
+		/// </summary>
+		/// <param name="id">Role Id</param>
+		/// <returns>Result of the delete operation</returns>
+		[HttpDelete("{id}")]
+		[SwaggerOperation(Summary = "Delete a role by Id")]
+		[SwaggerResponse(StatusCodes.Status204NoContent, "Role deleted")]
+		[SwaggerResponse(StatusCodes.Status404NotFound, "Role not found")]
+		public async Task<IActionResult> DeleteRole(int id)
         {
-            if (id != model.Id)
-            {
-                return BadRequest();
-            }
-
-            var role = await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
-            role.Name = model.Name;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RoleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok();
+            return await _roleService.DeleteRole(id);
         }
 
-        // POST: api/Roles
-        [HttpPost]
-        public async Task<ActionResult<Role>> PostRole([FromBody] Role role)
-        {
-            if (_context.Roles == null)
-            {
-                return Problem("Entity set 'AppDbContext.Roles'  is null.");
-            }
-            await _context.Roles.AddAsync(role);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetRole", new { id = role.Id }, role);
-            // return OK(role);
-        }
-
-        // DELETE: api/Roles/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRole(int id)
-        {
-            if (_context.Roles == null)
-            {
-                return NotFound();
-            }
-            var role = await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            _context.Roles.Remove(role);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool RoleExists(int id)
-        {
-            return (_context.Roles?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+       
     }
 }

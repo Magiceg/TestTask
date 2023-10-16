@@ -1,6 +1,6 @@
 ﻿using TestTask.Model;
 
-namespace TestTask.Services.Filtering
+namespace TestTask.Services.UserMethod
 {
     public static class UserFilters
     {

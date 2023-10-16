@@ -1,0 +1,199 @@
+2023-10-15 13:05:52.539 +03:00 [INF] User profile is available. Using 'C:\Users\Пользователь\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-15 13:05:53.062 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:05:53.065 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:05:53.069 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:05:53.071 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:05:53.074 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:05:53.654 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:05:54.123 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 470.3524ms
+2023-10-15 13:05:54.129 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:05:54.136 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:05:54.139 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 9.2954ms
+2023-10-15 13:05:54.186 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 50.0472ms
+2023-10-15 13:05:54.234 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:05:54.382 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 148.3042ms
+2023-10-15 13:06:03.328 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/1 - -
+2023-10-15 13:07:11.934 +03:00 [INF] User profile is available. Using 'C:\Users\Пользователь\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-10-15 13:07:12.236 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:07:12.239 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:07:12.245 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:07:12.247 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:07:12.249 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:07:12.755 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:07:12.959 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:07:12.959 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:07:12.960 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 206.0034ms
+2023-10-15 13:07:12.970 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 10.8797ms
+2023-10-15 13:07:12.981 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.1931ms
+2023-10-15 13:07:13.067 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:07:13.199 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 131.8930ms
+2023-10-15 13:07:24.838 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:07:35.469 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at TestTask.TokenConfiguration.AuthenticationConfig.<>c__DisplayClass0_0.<ConfigureAuthentication>b__0(JwtBearerOptions options) in D:\Projects\TestTask\TestTask\TokenConfiguration\AuthenticationConfig.cs:line 15
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-10-15 13:07:35.478 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 500 - text/plain;+charset=utf-8 10640.0146ms
+2023-10-15 13:08:30.443 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:08:30.482 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:08:30.488 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:08:30.490 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:08:30.492 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:08:30.938 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:08:31.157 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 220.7191ms
+2023-10-15 13:08:31.166 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:08:31.166 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:08:31.183 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 17.5494ms
+2023-10-15 13:08:31.187 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.4840ms
+2023-10-15 13:08:31.262 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:08:31.395 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 132.7845ms
+2023-10-15 13:08:37.520 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:08:37.552 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-10-15 13:08:37.588 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.<>c__DisplayClass0_0.<<HandleAsync>g__Handle|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-10-15 13:08:37.593 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 500 - text/plain;+charset=utf-8 72.5351ms
+2023-10-15 13:09:10.431 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:09:10.486 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:09:10.501 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:09:10.504 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:09:10.514 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:09:11.102 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:09:11.315 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:09:11.315 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:09:11.316 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 214.7426ms
+2023-10-15 13:09:11.327 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 12.0898ms
+2023-10-15 13:09:11.335 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.1003ms
+2023-10-15 13:09:11.407 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:09:11.536 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 128.8089ms
+2023-10-15 13:09:20.946 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:09:20.971 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-10-15 13:09:21.009 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.<>c__DisplayClass0_0.<<HandleAsync>g__Handle|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-10-15 13:09:21.014 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 500 - text/plain;+charset=utf-8 68.0881ms
+2023-10-15 13:12:23.874 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:12:23.924 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:12:23.932 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:12:23.934 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:12:23.937 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:12:24.337 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:12:24.557 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 221.4504ms
+2023-10-15 13:12:24.568 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:12:24.568 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:12:24.586 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 18.3450ms
+2023-10-15 13:12:24.593 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.7403ms
+2023-10-15 13:12:24.653 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:12:24.789 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 136.8646ms
+2023-10-15 13:12:29.242 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:12:29.298 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Endpoint TestTask.Controllers.UsersController.GetUser (TestTask) contains authorization metadata, but a middleware was not found that supports authorization.
+Configure your application startup by adding app.UseAuthorization() in the application startup code. If there are calls to app.UseRouting() and app.UseEndpoints(...), the call to app.UseAuthorization() must go between them.
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.ThrowMissingAuthMiddlewareException(Endpoint endpoint)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-10-15 13:12:29.302 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 500 - text/plain;+charset=utf-8 59.2564ms
+2023-10-15 13:13:41.030 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:13:41.063 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:13:41.068 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:13:41.070 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:13:41.072 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:13:41.791 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:13:42.032 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:13:42.032 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:13:42.041 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 250.0980ms
+2023-10-15 13:13:42.060 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 27.7275ms
+2023-10-15 13:13:42.071 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.5739ms
+2023-10-15 13:13:42.161 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:13:42.325 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 163.5424ms
+2023-10-15 13:13:46.980 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:13:47.003 +03:00 [INF] Executing endpoint 'TestTask.Controllers.UsersController.GetUser (TestTask)'
+2023-10-15 13:13:47.033 +03:00 [INF] Route matched with {action = "GetUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TestTask.Model.User]] GetUser(Int32) on controller TestTask.Controllers.UsersController (TestTask).
+2023-10-15 13:13:47.039 +03:00 [INF] Executed action TestTask.Controllers.UsersController.GetUser (TestTask) in 1.8187ms
+2023-10-15 13:13:47.045 +03:00 [INF] Executed endpoint 'TestTask.Controllers.UsersController.GetUser (TestTask)'
+2023-10-15 13:13:47.084 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'TestTask.Services.Interfaces.IUserService' while attempting to activate 'TestTask.Controllers.UsersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-10-15 13:13:47.089 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 500 - text/plain;+charset=utf-8 108.6410ms
+2023-10-15 13:15:35.275 +03:00 [INF] Now listening on: https://localhost:7205
+2023-10-15 13:15:35.308 +03:00 [INF] Now listening on: http://localhost:5141
+2023-10-15 13:15:35.314 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-10-15 13:15:35.318 +03:00 [INF] Hosting environment: Development
+2023-10-15 13:15:35.320 +03:00 [INF] Content root path: D:\Projects\TestTask\TestTask
+2023-10-15 13:15:36.126 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/index.html - -
+2023-10-15 13:15:36.373 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/index.html - - - 200 - text/html;charset=utf-8 248.3544ms
+2023-10-15 13:15:36.376 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_vs/browserLink - -
+2023-10-15 13:15:36.376 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - -
+2023-10-15 13:15:36.402 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_framework/aspnetcore-browser-refresh.js - - - 200 12348 application/javascript;+charset=utf-8 25.1759ms
+2023-10-15 13:15:36.414 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 37.7200ms
+2023-10-15 13:15:36.504 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - -
+2023-10-15 13:15:36.675 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 171.0100ms
+2023-10-15 13:15:42.232 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7205/api/Users/2 - -
+2023-10-15 13:15:42.253 +03:00 [INF] Executing endpoint 'TestTask.Controllers.UsersController.GetUser (TestTask)'
+2023-10-15 13:15:42.273 +03:00 [INF] Route matched with {action = "GetUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TestTask.Model.User]] GetUser(Int32) on controller TestTask.Controllers.UsersController (TestTask).
+2023-10-15 13:15:45.577 +03:00 [INF] Executed DbCommand (108ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [t0].[UserId], [t0].[RoleId], [t0].[Id], [t0].[Id0], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Age], [u].[Email], [u].[Name]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [u0].[Id], [r].[Id] AS [Id0], [r].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+) AS [t0] ON [t].[Id] = [t0].[UserId]
+ORDER BY [t].[Id], [t0].[UserId], [t0].[RoleId]
+2023-10-15 13:15:45.683 +03:00 [INF] Executing OkObjectResult, writing value of type 'TestTask.Model.User'.
+2023-10-15 13:15:45.904 +03:00 [INF] Executed action TestTask.Controllers.UsersController.GetUser (TestTask) in 3626.6372ms
+2023-10-15 13:15:45.906 +03:00 [INF] Executed endpoint 'TestTask.Controllers.UsersController.GetUser (TestTask)'
+2023-10-15 13:15:45.912 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7205/api/Users/2 - - - 200 230 application/json;+charset=utf-8 3680.0187ms

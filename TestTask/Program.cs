@@ -10,6 +10,8 @@ using System.Text;
 using Serilog.Events;
 using Serilog;
 using Microsoft.AspNetCore.Hosting;
+using TestTask.Services.Interfaces;
+using TestTask.Services;
 
 namespace TestTask
 {
@@ -33,8 +35,11 @@ namespace TestTask
                     = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
+			builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+
+			// Configuring Swagger
+			builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(x =>
             {
                 var basePath = AppContext.BaseDirectory;
@@ -54,10 +59,13 @@ namespace TestTask
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("TestTaskConnection")));
 
-            // Configuring the Serilog logger
-            Log.Logger = new LoggerConfiguration()
+			
+
+
+			// Configuring the Serilog logger
+			Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console() // Log output to the console
-                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day) //Write logs to a file
+                .WriteTo.File("LogFile/log.txt", rollingInterval: RollingInterval.Day) //Write logs to a file
                 .CreateLogger();
 
             builder.Logging.AddSerilog(); 
@@ -73,7 +81,8 @@ namespace TestTask
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.MapControllers();
 
